@@ -10,6 +10,7 @@
     ],
     "setup_modules": [
         "lib.fireh_runner.setup_modules.python",
+        "lib.fireh_runner.setup_modules.npm",
         "lib.fireh_runner.setup_modules.pybuildtool"
     ],
     "python_version": "3.7",
