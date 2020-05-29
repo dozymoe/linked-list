@@ -1,0 +1,50 @@
+frontend:
+    css:
+        webpack:
+            options:
+                config_file: "{_1}/webpack-{_2}.config.js"
+                work_dir: "{_1}/"
+            raw_depend_in:
+                - "{_1}/**/*.scss"
+                - "{_1}/webpack-{_2}.config.js"
+            raw_extra_out:
+                - var/webpack-css-meta.json
+
+    js:
+        webpack:
+            options:
+                config_file: "{_1}/webpack-{_2}.config.js"
+                work_dir: "{_1}/"
+            raw_depend_in:
+                - "{_1}/index.js"
+                - "{_1}/account/**/*.js"
+                - "{_1}/core/**/*.js"
+                - "{_1}/webpack-{_2}.config.js"
+            raw_extra_out:
+                - var/webpack-js-meta.json
+
+
+node_modules:
+    material-design-icons:
+        cp:
+            raw_file_in: "{_1}/{_2}/iconfont/MaterialIcons-Regular.*"
+            raw_file_out: public/assets/fonts/
+
+    typeface-roboto:
+        cp:
+            raw_file_in: "{_1}/{_2}/files/*"
+            raw_file_out: public/assets/fonts/
+        woff2ttf:
+            raw_file_in: "{_1}/{_2}/files/*.woff"
+            raw_file_out: public/assets/fonts/
+        woff2svg:
+            raw_file_in: "{_1}/{_2}/files/*.woff"
+            raw_file_out: public/assets/fonts/
+        eot:
+            woff2ttf:
+                raw_file_in: "{_1}/{_2}/files/*.woff"
+                raw_file_out: tmp/fonts/
+            ttf2eot:
+                rule_in: "{_1}/{_2}/{_3}/woff2ttf"
+                raw_file_in: tmp/fonts/*.ttf
+                raw_file_out: public/assets/fonts/

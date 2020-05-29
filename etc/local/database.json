@@ -1,0 +1,7 @@
+{
+    "engine": "postgresql",
+    "host": "127.0.0.1",
+    "name": "linked_list",
+    "username": "local",
+    "password": "local"
+}

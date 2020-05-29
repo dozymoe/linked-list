@@ -1,0 +1,98 @@
+{% extends "drawer.html" %}
+{% load i18n %}
+
+{% block content %}
+  <div class="mdc-layout-grid">
+    <div class="mdc-layout-grid__inner">
+      <div class="mdc-layout-grid__cell--span-12">
+        <form action="{% url 'links:create' %}" method="post">
+          {% csrf_token %}
+
+          <div class="form-group">
+            {% include "material/form/text.html" with field=create_form.url %}
+          </div>
+
+          <button type="submit" class="mdc-button mdc-button--raised">
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">
+              {% trans "Add Link" %}
+            </span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="mdc-layout-grid__inner home-url-list">
+      <div class="mdc-layout-grid__cell--span-12">
+        <div class="mdc-data-table w-100">
+          <table aria-label="Links" class="mdc-data-table__table">
+            <thead>
+              <tr class="mdc-data-table__header-row">
+                <th role="columnheader" scope="col"
+                    class="mdc-data-table__header-cell">
+                  URL
+                </th>
+                <th role="columnheader" scope="col"
+                    class="mdc-data-table__header-cell">
+                  {% trans "Description" %}
+                </th>
+                <th role="columnheader" scope="col"
+                    class="mdc-data-table__header-cell">
+                  {% trans "Published At" %}
+                </th>
+                <th role="columnheader" scope="col"
+                    class="mdc-data-table__header-cell">
+                  {% trans "Actions" %}
+                </th>
+              </tr>
+            </thead>
+            <tbody class="mdc-data-table__content">
+              {% for obj in pager %}
+                <tr class="mdc-data-table__row">
+                  <td class="mdc-data-table__cell">
+                    <a href="{{ obj.href }}" target="_blank">
+                      {{ obj.title }}
+                    </a>
+                  </td>
+                  <td class="mdc-data-table__cell">
+                    {{ obj.description }}
+                  </td>
+                  <td class="mdc-data-table__cell">
+                    {{ obj.published_at }}
+                  </td>
+                  <td></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+            <tfoot>
+              <tr class="mdc-data-table__header-row">
+                <td colspan="4" class="mdc-data-table__header-cell pagination">
+                  <span class="step-links">
+                    {% if pager.has_previous %}
+                      <a href="?page=1">&laquo; first</a>
+                      <a href="?page={{ pager.previous_page_number }}">
+                        previous
+                      </a>
+                    {% endif %}
+
+                    <span class="current">
+                      Page {{ pager.number }} of
+                      {{ pager.paginator.num_pages }}.
+                    </span>
+
+                    {% if pager.has_next %}
+                      <a href="?page={{ pager.next_page_number }}">next</a>
+                      <a href="?page={{ pager.paginator.num_pages }}">
+                        last &raquo;
+                      </a>
+                    {% endif %}
+                  </span>
+                </td>
+              <tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,63 @@
+@use "@material/theme";
+/*@use "@material/theme" with
+(
+    $primary: #fcb8ab,
+    $secondary: #feeae6,
+    $on-primary: #442b2d,
+    $on-secondary: #442b2d,
+);*/
+
+@use '@material/button/mdc-button';
+@use "@material/card/mdc-card";
+@use "@material/checkbox/mdc-checkbox";
+@use "@material/data-table/mdc-data-table";
+@use "@material/drawer/mdc-drawer";
+@use "@material/form-field/mdc-form-field";
+@use "@material/icon-button/mdc-icon-button";
+@use "@material/layout-grid/mdc-layout-grid";
+@use "@material/list/mdc-list";
+@use "@material/textfield/mdc-text-field";
+@use "@material/top-app-bar/mdc-top-app-bar";
+@use "@material/typography/mdc-typography";
+
+@import "fonts/material-icons";
+@import "fonts/roboto";
+@import "forms/form";
+@import "pages/home";
+
+body {
+    margin: 0;
+}
+
+main {
+    padding-top: 64px;
+}
+
+.container
+{
+    //margin: 10px 20px;
+    //margin: 1rem 2vw;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+
+.form-page.size-sm
+{
+    margin: 10vh auto;
+    min-width: 300px;
+    width: 28em;
+}
+
+/* Floating label got in the way */
+input:not(:focus)::placeholder
+{
+    color: transparent !important;
+}
+
+.c-white { color: white }
+
+.d-block { display: block }
+
+.w-100 { width: 100%; }

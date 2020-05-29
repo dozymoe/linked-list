@@ -1,0 +1,25 @@
+{% extends "drawer.html" %}
+{% load i18n %}
+
+{% block content %}
+  <div class="mdc-layout-grid">
+    <div class="mdc-layout-grid__inner">
+      <div class="mdc-layout-grid__cell--span-12">
+        <form action="" method="post">
+          {% csrf_token %}
+
+          <div class="form-group">
+            {% include "material/form/text.html" with field=form.url %}
+          </div>
+
+          <button type="submit" class="mdc-button mdc-button--raised">
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">
+              {% trans "Add Link" %}
+            </span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

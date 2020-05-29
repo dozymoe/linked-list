@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block head_title %}Hallo | {{block.super}}{% endblock %}
+{% block title %}Hallo{% endblock %}
+
+{% block content %}
+  <p>
+    This website helps you store your links, start by 
+    <a href="{% url 'account_signup' %}">registering</a>
+    or if you are already registered,
+    <a href="{% url 'account_login' %}">login</a>.
+  </p>
+{% endblock %}

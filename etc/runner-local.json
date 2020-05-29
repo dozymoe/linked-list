@@ -1,0 +1,35 @@
+{
+    "modules": [
+        "lib.fireh_runner.modules.setup",
+        "lib.fireh_runner.modules.python",
+        "lib.fireh_runner.modules.redis",
+        "lib.fireh_runner.modules.memcached",
+        "lib.fireh_runner.modules.virtualenv",
+        "lib.fireh_runner.modules.waf",
+        "lib.fireh_runner.modules.django"
+    ],
+    "setup_modules": [
+        "lib.fireh_runner.setup_modules.python",
+        "lib.fireh_runner.setup_modules.pybuildtool"
+    ],
+    "python_version": "3.7",
+    "waf_version" : "2.0.19",
+    "default_project": "linked_list",
+    "default_variant": "local",
+    "configuration": {
+        "local": {
+            "linked_list": {
+                "shell_env": {
+                    "CONFIG_FILENAMES": [
+                        "etc/local/database.json",
+                        "etc/local/logging.json",
+                        "etc/local/memcached.json",
+                        "etc/local/frontend/server.json"
+                    ],
+                    "REDIS_PORT": "16379",
+                    "MEMCACHED_PORT": "111211"
+                }
+            }
+        }
+    }
+}

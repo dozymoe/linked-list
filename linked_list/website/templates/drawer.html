@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block header %}{% endblock %}
+
+{% block body %}
+  <aside class="mdc-drawer mdc-drawer--dismissible">
+    <div class="mdc-drawer__content">
+      <nav class="mdc-list">
+        {% block drawer_menu %}
+          <a href="#" aria-current="page"
+              class="mdc-list-item mdc-list-item--activated">
+            <i aria-hidden="true" class="material-icons mdc-list-item__graphic">
+              inbox
+            </i>
+            <span class="mdc-list-item__text">Inbox</span>
+          </a>
+        {% endblock %}
+      </nav>
+    </div>
+  </aside>
+
+  <div class="mdc-drawer-app-content">
+    <header class="mdc-top-app-bar">
+      <div class="mdc-top-app-bar__row">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+          <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">
+            menu
+          </button>
+          <a href="/" class="mdc-top-app-bar__title c-white">
+            {{ title_content|default:request.site.name }}
+          </a>
+        </section>
+      </div>
+    </header>
+
+    <main id="main">
+      {% block content %}
+        <p>Under Construction.</p>
+      {% endblock %}
+    </main>
+  </div>
+{% endblock %}

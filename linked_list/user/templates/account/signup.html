@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load website_extras %}
+
+{% block head_title %}{% trans "Signup" %} | {{block.super}}{% endblock %}
+{% block header %}{% endblock %}
+
+{% block content %}
+  <div class="form-page size-sm">
+    <h1 class="mdc-typography--headline4">
+      {% trans "Sign Up" %}
+    </h1>
+
+    <p>
+      {% blocktrans %}
+        Already have an account? Then please
+        <a href="{{ login_url }}">sign in</a>.
+      {% endblocktrans %}
+    </p>
+
+    <form method="post" action="" class="signup" id="signup_form">
+      {% csrf_token %}
+
+      {% include "material/form/text.html" with field=form.username %}
+      {% include "material/form/text.html" with field=form.email %}
+      {% include "material/form/text.html" with field=form.password1 %}
+      {% include "material/form/text.html" with field=form.password2 %}
+
+      {% if redirect_field_value %}
+        <input name="{{ redirect_field_name }}"
+            value="{{ redirect_field_value }}" type="hidden" />
+      {% endif %}
+
+      <p>
+        <button type="submit" class="mdc-button mdc-button--raised">
+          <div class="mdc-button__ripple"></div>
+          <span class="mdc-button__label">
+            {% trans "Sign Up" %} &raquo;
+          </span>
+        </button>
+      </p>
+
+      <input name="next" value="{{next}}" type="hidden">
+    </form>
+  </div>
+{% endblock %}

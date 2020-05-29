@@ -1,0 +1,17 @@
+bs4==0.0.1
+Celery==4.4.2
+django==3.0.6
+django-allauth==0.41.0
+django-extensions==2.2.9
+django-redis==4.11.0
+extruct==0.9.0
+gunicorn==20.0.4
+html5lib==1.0.1
+Pillow==7.1.2
+python3-openid==3.1.0
+psycopg2==2.8.5
+pybuildtool==2.0.32
+pylint==2.5.2
+python-dateutil==2.8.1
+python-memcached==1.59
+requests==2.23.0

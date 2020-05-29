@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign Out" %} | {{block.super}}{% endblock %}
+{% block header %}{% endblock %}
+
+{% block content %}
+  <div class="form-page size-sm">
+    <h1 class="mdc-typography--headline4">
+      {% trans "Sign Out" %}
+    </h1>
+
+    <p>{% trans 'Are you sure you want to sign out?' %}</p>
+
+    <form method="post" action="">
+      {% csrf_token %}
+
+      {% if redirect_field_value %}
+        <input name="{{ redirect_field_name }}"
+            value="{{ redirect_field_value }}" type="hidden"/>
+      {% endif %}
+
+      <p>
+        <button type="submit" class="mdc-button mdc-button--raised">
+          <div class="mdc-button__ripple"></div>
+          <span class="mdc-button__label">
+            {% trans 'Sign Out' %}
+          </span>
+        </button>
+      </p>
+    </form>
+  </div>
+{% endblock %}

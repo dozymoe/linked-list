@@ -1,0 +1,37 @@
+{% load static %}
+{% load website_extras %}
+<!DOCTYPE html>
+{% captureas title_content %}{% block title %}{% endblock %}{% endcaptureas -%}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% spaceless %}
+    <title>
+      {% if title_content %}{{ title_content }} | {% endif %}
+      {{ request.site.name }}
+    </title>
+  {% endspaceless %}
+  <link rel="shortcut icon" href="/favicon.ico">
+  {% block head_styles %}{% stylesheets %}{% endblock %}
+  {% block head_scripts %}{% javascripts %}{% endblock %}
+</head>
+<body class="mdc-typography">
+  {% block body %}
+    <header class="mdc-top-app-bar">
+      <div class="mdc-top-app-bar__row">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+          <a href="/" class="mdc-top-app-bar__title">
+            {{ title_content|default:request.site.name }}
+          </a>
+        </section>
+      </div>
+    </header>
+
+    <main id="main">
+      {% block content %}
+        <p>Under construction.</p>
+      {% endblock %}
+    </main>
+  {% endblock %}
+  {% block extra_body %}{% endblock %}
+</body>

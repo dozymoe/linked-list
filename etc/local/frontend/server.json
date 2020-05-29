@@ -1,0 +1,5 @@
+{
+    "allowed_hosts": ["linked-list.test"],
+    "debug": true,
+    "secret_key": "4pga(c1qe!l_^)4-1czf1w(7ab=#m8$(5l%cwqbgov4skjyri0"
+}
