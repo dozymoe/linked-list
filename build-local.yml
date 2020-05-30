@@ -48,3 +48,73 @@ node_modules:
                 rule_in: "{_1}/{_2}/{_3}/woff2ttf"
                 raw_file_in: tmp/fonts/*.ttf
                 raw_file_out: public/assets/fonts/
+
+
+linked_list:
+    options:
+        pylint_config_file: etc/pylint.rc
+
+    author:
+        pylint:
+            raw_file_in: "{_1}/{_2}/*.py"
+    link:
+        pylint:
+            raw_file_in: "{_1}/{_2}/*.py"
+    linked_list:
+        pylint:
+            raw_file_in: "{_1}/{_2}/*.py"
+    material:
+        pylint:
+            raw_file_in: "{_1}/{_2}/*.py"
+    misc:
+        pylint:
+            raw_file_in: "{_1}/{_2}/*.py"
+    publisher:
+        pylint:
+            raw_file_in: "{_1}/{_2}/*.py"
+    user:
+        pylint:
+            raw_file_in: "{_1}/{_2}/*.py"
+    website:
+        pylint:
+            raw_file_in: "{_1}/{_2}/*.py"
+
+    linked-redis:
+        runit_sv:
+            options:
+                command: restart
+                target: "~/service/{_2}/"
+                wait_sec: 60
+                force: true
+    linked-django:
+        runit_sv:
+            options:
+                command: restart
+                target: "~/service/{_2}/"
+                wait_sec: 60
+                force: true
+            rule_in:
+                - "{_1}/author/pylint"
+                - "{_1}/link/pylint"
+                - "{_1}/linked_list/pylint"
+                - "{_1}/material/pylint"
+                - "{_1}/misc/pylint"
+                - "{_1}/publisher/pylint"
+                - "{_1}/user/pylint"
+                - "{_1}/website/pylint"
+    linked-celery:
+        runit_sv:
+            options:
+                command: restart
+                target: "~/service/{_2}/"
+                wait_sec: 60
+                force: true
+            rule_in:
+                - "{_1}/author/pylint"
+                - "{_1}/link/pylint"
+                - "{_1}/linked_list/pylint"
+                - "{_1}/material/pylint"
+                - "{_1}/misc/pylint"
+                - "{_1}/publisher/pylint"
+                - "{_1}/user/pylint"
+                - "{_1}/website/pylint"

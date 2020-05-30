@@ -9,7 +9,7 @@ class LinkKeyword(models.Model):
     class Meta:
         ordering = ['name']
 
-    def __str__(self):
+    def __str__(self): # pylint:disable=invalid-str-returned
         return self.name
 
 
@@ -42,5 +42,5 @@ class Link(models.Model):
     class Meta:
         ordering = ['created_at']
 
-    def __str__(self):
-        return self.headline
+    def __str__(self): # pylint:disable=invalid-str-returned
+        return self.title

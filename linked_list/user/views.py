@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import redirect, render
+#from django.shortcuts import redirect, render
 
-def login(request):
+def login_page(request):
     username = request.POST['username']
     password = request.POST['password']
     user = authenticate(request, username=username, password=password)
@@ -13,6 +13,6 @@ def login(request):
         pass
 
 
-def logout(request):
+def logout_page(request):
     logout(request)
     # redirect to login page

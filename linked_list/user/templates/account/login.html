@@ -47,6 +47,7 @@
 
     <form method="post" action="" class="login">
       {% csrf_token %}
+      {{ form.non_field_errors }}
 
       {% include "material/form/text.html" with field=form.login %}
       {% include "material/form/text.html" with field=form.password %}

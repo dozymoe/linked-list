@@ -1,3 +1,9 @@
+import logging
+from mimetypes import guess_extension
+import os
+import shutil
+from uuid import uuid4
+#-
 from bs4 import BeautifulSoup
 from celery import shared_task
 from dateutil.parser import parse as dateparse
@@ -7,13 +13,9 @@ from django.core.files import File
 from django.db import transaction
 from django.utils.timezone import now, is_aware, make_aware
 import extruct
-import logging
-from mimetypes import guess_extension
-import os
 from PIL import Image
 import requests
-import shutil
-from uuid import uuid4
+#-
 from author.models import Author, AuthorSocial
 from link.models import Link, LinkKeyword
 from publisher.models import Publisher, PublisherSocial
@@ -291,7 +293,7 @@ def store_link_data(values):
     try:
         user = User.objects.get(pk=values['user.id'])
     except User.DoesNotExist:
-        return
+        return None
 
     date = None
     if 'page.published_at' in values:
@@ -411,7 +413,7 @@ def store_link_data(values):
 
     if 'page.keywords' in values:
         for name in values['page.keywords']:
-            keyword, created = LinkKeyword.objects.get_or_create(name=name)
+            keyword, _ = LinkKeyword.objects.get_or_create(name=name)
             link.keywords.add(keyword)
 
     return link.id

@@ -1,7 +1,7 @@
 """ Helper functions """
 
 import os
-from collections import Mapping
+from collections.abc import Mapping
 from json import load as json_load
 
 

@@ -3,8 +3,8 @@ try:
 except ImportError:
     from collections import Mapping, MutableMapping
 from datetime import date, datetime
-from google.protobuf.message import Message
-from google.protobuf.timestamp_pb2 import Timestamp
+from google.protobuf.message import Message # pylint:disable=import-error
+from google.protobuf.timestamp_pb2 import Timestamp # pylint:disable=import-error
 
 
 class ProtoBufAdapter(MutableMapping):

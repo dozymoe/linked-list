@@ -1,6 +1,7 @@
-from celery import shared_task
+import os
+import time
 from django.conf import settings
-import os, time
+from celery import shared_task
 
 @shared_task
 def cleanup_formdata_uploads():

@@ -18,7 +18,7 @@ class Publisher(models.Model):
     class Meta:
         ordering = ['name']
 
-    def __str__(self):
+    def __str__(self): # pylint:disable=invalid-str-returned
         return self.name
 
 
@@ -32,5 +32,5 @@ class PublisherSocial(models.Model):
     class Meta:
         ordering = ['url']
 
-    def __str__(self):
+    def __str__(self): # pylint:disable=invalid-str-returned
         return self.url

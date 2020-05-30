@@ -1,5 +1,4 @@
 from django.core.paginator import Paginator
-from django.http import HttpResponse
 from django.shortcuts import render
 from link.forms import CreateForm
 from link.models import Link
