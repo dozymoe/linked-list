@@ -35,7 +35,7 @@ def create(request):
             return render(request, 'link/create.html', {'form': form})
 
         result = process_url.delay(form.cleaned_data['url'])
-        data = result.get(timeout=60, propagate=False)
+        data = result.get(timeout=180, propagate=False)
         if not data or isinstance(data, Exception):
             form.add_error('url', "Unable to process the webpage, contact "
                     "website administrator.")
@@ -94,5 +94,5 @@ def create(request):
                 })
 
     result = store_link_data.delay(data['values'])
-    data = result.get(timeout=60, propagate=False)
+    data = result.get(timeout=360, propagate=False)
     return HttpResponseRedirect(reverse('home'))

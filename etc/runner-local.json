@@ -28,7 +28,7 @@
                         "etc/local/frontend/server.json"
                     ],
                     "REDIS_PORT": "16379",
-                    "MEMCACHED_PORT": "111211"
+                    "MEMCACHED_PORT": "11211"
                 }
             }
         }
