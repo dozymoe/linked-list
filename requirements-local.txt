@@ -1,6 +1,6 @@
 bs4==0.0.1
 Celery==4.4.2
-django==3.0.6
+django==3.0.14
 django-allauth==0.41.0
 django-extensions==2.2.9
 django-redis==4.11.0
